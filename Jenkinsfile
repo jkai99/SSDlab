@@ -8,7 +8,7 @@ pipeline {
         stage('Verify PHP and OpenSSL') {
             steps {
                 sh 'php --version'
-                sh 'php -r "print_r(openssl_get_cert_locations());"'
+                sh 'php -m | grep openssl'
             }
         }
         stage('Setup') {
