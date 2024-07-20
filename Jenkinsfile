@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PATH = "C:\\Program Files\\php-8.3.9;${env.PATH}"
+        PATH = "C:\\Program Files\\php-8.3.9;C:\\ProgramData\\Composer;${env.PATH}"
         PHPRC = "C:\\Program Files\\php-8.3.9"
     }
     stages {
