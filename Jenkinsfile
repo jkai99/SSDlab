@@ -1,6 +1,16 @@
 pipeline {
     agent any
+    environment {
+        PATH = "C:\\Program Files\\php-8.3.9;${env.PATH}"
+        PHPRC = "C:\\Program Files\\php-8.3.9"
+    }
     stages {
+        stage('Verify PHP and OpenSSL') {
+            steps {
+                sh 'php --version'
+                sh 'php -r "print_r(openssl_get_cert_locations());"'
+            }
+        }
         stage('Setup') {
             steps {
                 // Install Composer
