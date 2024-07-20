@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PATH = "C:\\Program Files\\php-8.3.9;C:\\ProgramData\\Composer;${env.PATH}"
+        PATH = "C:\\Program Files\\php-8.3.9;${env.PATH}"
         PHPRC = "C:\\Program Files\\php-8.3.9"
     }
     stages {
@@ -14,12 +14,12 @@ pipeline {
         stage('Setup') {
             steps {
                 // Ensure Composer is installed and accessible
-                sh 'php -c "C:\\Program Files\\php-8.3.9\\php.ini" C:\\ProgramData\\Composer\\composer.phar --version'
+                sh 'php -c "C:\\Program Files\\php-8.3.9\\php.ini" "C:\\ProgramData\\Composer\\composer.phar" --version'
             }
         }
         stage('Build') {
             steps {
-                sh 'php -c "C:\\Program Files\\php-8.3.9\\php.ini" C:\\ProgramData\\Composer\\composer.phar install'
+                sh 'php -c "C:\\Program Files\\php-8.3.9\\php.ini" "C:\\ProgramData\\Composer\\composer.phar" install'
             }
         }
         stage('Test') {
