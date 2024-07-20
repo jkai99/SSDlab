@@ -24,8 +24,13 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'php -c "C:\\Program Files\\php-8.3.9\\php.ini" ./vendor/bin/phpunit tests'
+                sh 'php -c "C:\\Program Files\\php-8.3.9\\php.ini" ./vendor/bin/phpunit --log-junit logs/unitreport.xml -c tests/phpunit.xml tests'
             }
+        }
+    }
+    post {
+        always {
+            junit 'logs/unitreport.xml'
         }
     }
 }
